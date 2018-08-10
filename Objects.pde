@@ -7,3 +7,12 @@ class floor{
   }
   
 }
+class rope{
+  int xpos, ypos;
+  
+  rope(int x, int y){
+  xpos = x;
+  ypos = y;
+  }
+  
+}

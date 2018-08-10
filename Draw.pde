@@ -10,3 +10,8 @@ void draw_hero(){
     shape(s,-130,-50,200,100);
   popMatrix();
 }
+
+void draw_rope(int x,int y){
+  fill(200,50,100);
+  rect(x,y,20,64);
+}
