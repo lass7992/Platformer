@@ -1,10 +1,9 @@
   //spil data
-int bane_x_length = 800;
-int bane_y_length = 800;
 int screen_x = 1020;
 int screen_y = 700;
 
 int hero_dir = -1;
+int hero_liv = 3;
 
 int current_bullet_speed = 10;
 
@@ -13,6 +12,7 @@ int current_bullet_speed = 10;
 int x_pos = 100;
 int y_pos = 100;
 int jump_counter = 0;
+int invis_counter = 0;
 
   //boolean
 boolean jumping = false;
@@ -23,6 +23,7 @@ PShape s;
 PImage background_img;
 PImage current_hero;
 PImage floor_tile;
+PImage HP_img;
 
 
 //arrays
@@ -31,6 +32,7 @@ rope [] ropes;
 bullet [] bullets;
 map_objekt [] map_objekter;
 enemy [] enemies;
+PImage [] enemy_img;
 
 //String
 String current_bullet = "normal";
@@ -53,19 +55,14 @@ void setup(){
   bullets = new bullet[0];
   map_objekter = new map_objekt[0];
   enemies = new enemy[1];
+  enemy_img = new PImage[6];
+  
   
   enemies[0] = new enemy("normal",4,100);
   
-  //loader mappet
-  Bane_Creater("/Baner/Bane_1/Map.txt"); //skriv navnet på filen der skal indlæses
-  
-  
-  //loader billeder
-  s = loadShape("soldier.svg");
-  current_hero = loadImage("/Hero/Hero1/Hero_standing_spr.png");
-  background_img =  loadImage("/Baner/Bane_1/Background.png");
-  floor_tile = loadImage("/Baner/Bane_1/floor.png");
-  
+  //loader mappen og billeder
+  load_billeder();
+
   size(10,10);
   surface.setSize(screen_x, screen_y);
   frameRate(60);
@@ -76,6 +73,7 @@ void setup(){
 
 
 void draw(){
+  
   //controllers and checkers
   gravity();
   MovementChecker();
@@ -84,6 +82,15 @@ void draw(){
   }
   if(gravity_able == false && collision_rope() == true){
     gravity_able = true;
+  }
+  //enemy hit
+  if(invis_counter == 0){
+    if(Collision_enermy(x_pos,y_pos) == true){  
+      hero_liv--;
+      invis_counter = 100;
+    }
+  }else{
+    invis_counter--;
   }
   
 
@@ -95,7 +102,12 @@ void draw(){
   
   
   for(int i = 0 ; i < bullets.length ; i++){  //updatere skydne
+    if(bullets[i].xpos < 0 || bullets[i].xpos > screen_x){
+      bullets = (bullet[])concat(subset(bullets,0,i),subset(bullets,i+1,bullets.length-i-1));
+      continue; 
+    }
     bullets[i].update();
+
   }
 
   
@@ -121,11 +133,18 @@ void draw(){
     enemies[i].update();
   }
   
+    //hp
+  draw_liv();
+  
   
   //draw muffin
     muffin_instance.update();
   
 
-  
+  if(hero_liv == 0){
+    textSize(93); 
+    text("GAME OVER", 400, 400); 
+    noLoop();
+  }
   
 };

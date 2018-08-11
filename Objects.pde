@@ -35,7 +35,7 @@ class bullet{
   
   
   void update(){
-
+    
     xpos += dir*speed;
     draw();
     
@@ -83,6 +83,7 @@ class muffin{
       current_bullet_speed = int(random(5,15));
       current_bullet = "hej";
       muffin_instance = new muffin(int(random(100,800)),500); 
+      enemies = (enemy[])append(enemies,new enemy("normal",4,100));
     }
     
     if(taken == false){
