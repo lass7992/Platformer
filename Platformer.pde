@@ -24,10 +24,10 @@ PImage background_img;
 
 
 //arrays
-floor [] floor_instances;
 boolean[] keys;
 rope [] ropes;
 bullet [] bullets;
+map_objekt [] map_objekter;
 
 
 //String
@@ -47,9 +47,14 @@ void setup(){
   
   
   //opsætter arrays
-  floor_instances = new floor[0];
   ropes = new rope[0];
   bullets = new bullet[0];
+  map_objekter = new map_objekt[0];
+  
+  
+  //loader mappet
+  Bane_Creater("/Baner/Bane_1/Map.txt"); //skriv navnet på filen der skal indlæses
+  
   
   //loader billeder
   s = loadShape("soldier.svg");
@@ -58,17 +63,6 @@ void setup(){
   size(10,10);
   surface.setSize(screen_x, screen_y);
   frameRate(60);
-  
-  
-  for(int i = 0 ; i < 20 ; i++){
-    floor_instances = (floor[])append(floor_instances,new floor(i*64,630));
-  }
-  for(int i = 0 ; i < 6 ; i++){
-    floor_instances = (floor[])append(floor_instances,new floor(200+i*64,300));
-  }
-  for(int i = 0 ; i < 4 ; i++){
-    ropes = (rope[])append(ropes,new rope(350,300+i*64));
-  }
   
   
 }
@@ -101,8 +95,8 @@ void draw(){
   
   draw_hero();
   
-  for(int i = 0 ; i < floor_instances.length ; i++){
-    draw_floor(floor_instances[i].xpos,floor_instances[i].ypos);
+  for(int i = 0 ; i < map_objekter.length ; i++){
+    draw_floor(map_objekter[i].xpos, map_objekter[i].ypos);
   }
   for(int i = 0 ; i < ropes.length ; i++){
     draw_rope(ropes[i].xpos,ropes[i].ypos);
