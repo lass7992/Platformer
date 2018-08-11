@@ -84,6 +84,10 @@ class muffin{
       current_bullet = "hej";
       muffin_instance = new muffin(int(random(100,800)),500); 
       enemies = (enemy[])append(enemies,new enemy("normal",4,100));
+<<<<<<< HEAD
+=======
+      score++;
+>>>>>>> Lasses-branch
     }
     
     if(taken == false){
