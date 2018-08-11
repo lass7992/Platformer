@@ -1,15 +1,15 @@
 void gravity(){
-  if(collision_down() == true && gravity_able == true){
+  if(collision_down(x_pos,y_pos) == true && gravity_able == true){
     y_pos += 8;
   }
 }
 
-boolean collision_down(){
+boolean collision_down(int x, int y){
   boolean able = true;
   
   
   for(int i = 0 ; i < map_objekter.length ; i++){
-    if(x_pos < map_objekter[i].xpos+84 && x_pos > map_objekter[i].xpos-25 && y_pos+8 < map_objekter[i].ypos+114 &&  y_pos+8 > map_objekter[i].ypos-40){
+    if(x < map_objekter[i].xpos+84 && x > map_objekter[i].xpos-25 && y+8 < map_objekter[i].ypos &&  y+8 > map_objekter[i].ypos-40){
       able = false;
       break;
     }
@@ -30,4 +30,16 @@ boolean collision_rope(){
   }
   
   return able;
+}
+
+
+boolean Collision_skud( int x, int y){  
+  boolean hit = false;
+  for(int i = 0 ; i < bullets.length ; i++){
+    if(x < bullets[i].xpos+40 && x > bullets[i].xpos-40 && y < bullets[i].ypos+35 &&  y > bullets[i].ypos-35){
+      hit = true;
+      break;
+    }
+  }
+  return hit;
 }

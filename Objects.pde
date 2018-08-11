@@ -40,7 +40,6 @@ class bullet{
   }
   
   void draw(){
-    print(xpos);
     if(type == "normal"){
       fill(100,200,100);
     }

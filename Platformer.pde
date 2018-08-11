@@ -29,7 +29,7 @@ boolean[] keys;
 rope [] ropes;
 bullet [] bullets;
 map_objekt [] map_objekter;
-
+enemy [] enemies;
 
 //String
 String current_bullet = "normal";
@@ -51,7 +51,9 @@ void setup(){
   ropes = new rope[0];
   bullets = new bullet[0];
   map_objekter = new map_objekt[0];
+  enemies = new enemy[1];
   
+  enemies[0] = new enemy(100,100,"normal",4,1,100);
   
   //loader mappet
   Bane_Creater("/Baner/Bane_1/Map.txt"); //skriv navnet på filen der skal indlæses
@@ -97,12 +99,20 @@ void draw(){
   
   draw_hero();
   
+  // draw map
   for(int i = 0 ; i < map_objekter.length ; i++){
     draw_floor(map_objekter[i].xpos, map_objekter[i].ypos);
-  }
+  } 
+  // rope
   for(int i = 0 ; i < ropes.length ; i++){
     draw_rope(ropes[i].xpos,ropes[i].ypos);
   }
+  
+  //draw enemy
+  for(int i = 0 ; i < enemies.length ; i++){
+    enemies[i].update();
+  }
+  
   
   //draw muffin
     muffin_instance.update();
