@@ -22,6 +22,7 @@ boolean gravity_able = true;
 PShape s;
 PImage background_img;
 PImage current_hero;
+PImage floor_tile;
 
 
 //arrays
@@ -62,7 +63,8 @@ void setup(){
   //loader billeder
   s = loadShape("soldier.svg");
   current_hero = loadImage("/Hero/Hero1/Hero_standing_spr.png");
-  background_img =  loadImage("/Backgrounds/Background_HAHA.png");
+  background_img =  loadImage("/Baner/Bane_1/Background.png");
+  floor_tile = loadImage("/Baner/Bane_1/floor.png");
   
   size(10,10);
   surface.setSize(screen_x, screen_y);
