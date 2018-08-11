@@ -46,3 +46,16 @@ boolean Collision_skud( int x, int y){
   }
   return hit;
 }
+
+
+boolean Collision_enermy( int x, int y){  
+  boolean hit = false;
+  for(int i = 0 ; i < enemies.length ; i++){
+    if(x < enemies[i].xpos+40 && x > enemies[i].xpos-40 && y < enemies[i].ypos+35 &&  y > enemies[i].ypos-35){
+      hit = true;
+      
+      break;      
+    }
+  }
+  return hit;
+}

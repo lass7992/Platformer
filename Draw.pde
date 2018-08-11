@@ -6,7 +6,9 @@ void draw_hero(){
   pushMatrix();
     translate(x_pos, y_pos);
     scale(hero_dir,1);
+    if(invis_counter > 1){filter(NULE);}
     image(current_hero,-130,-94,87*2,70*2);
+    if(invis_counter > 1){filter(GRAY);}
   popMatrix();
 }
 
@@ -17,6 +19,15 @@ void draw_rope(int x,int y){
 
 void draw_background(){
   pushMatrix();
-  image(background_img,0,0);
+    image(background_img,0,0);
   popMatrix();
+}
+
+
+void draw_liv(){
+  for(int i=0 ; i < hero_liv ; i++){
+    fill(255,0,0);
+    image(HP_img,20+i*40,20);
+    //ellipse(20+i*40,20,20,20);
+  }
 }
