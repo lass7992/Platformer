@@ -2,12 +2,12 @@ class enemy{
   int xpos, ypos, speed, dir, hp, hp_max;
   String type;
   
-  enemy(int x, int y, String temp_type, int temp_speed, int temp_dir, int temp_hp){
-    xpos = x;
-    ypos = y;
+  enemy( String temp_type, int temp_speed, int temp_hp){
+    if(random(1) >= 0.5){xpos = 100;}else {xpos = 700;}
+    ypos = 100;
     speed = temp_speed;
     type = temp_type;
-    dir = temp_dir;
+    if(random(1) >= 0.5){dir = 1;}else {dir = -1;}
     hp = temp_hp;
     hp_max = hp;
     
@@ -15,8 +15,11 @@ class enemy{
   
   void update(){
 
-    if(xpos > bane_x_length+250){ // rykker monsteret ind på skærmen 
-      xpos -= bane_x_length+250;
+    if(xpos > bane_x_length+230){ // rykker monsteret ind på skærmen 
+      xpos -= bane_x_length+230;
+    }
+    if(xpos < 0){ // rykker monsteret ind på skærmen 
+      xpos += bane_x_length+230;
     }
     if(ypos > bane_y_length+250){ // rykker monsteret ind på skærmen 
       ypos -= bane_y_length+250;
@@ -28,12 +31,6 @@ class enemy{
     }else{
       xpos += dir*speed;
     }
-    
-    //mister liv hvis den rør et skud
-    if(Collision_skud(xpos,ypos) == true){
-      hp -= 10;
-    }
-    
     draw();
   }
   
@@ -47,6 +44,6 @@ class enemy{
     
     ellipse(xpos,ypos,50,50);
     fill(0,255,0);
-    rect(xpos-25,ypos-40,int((hp/hp_max))*50,10);
+    rect(xpos-25,ypos-40,(float(hp)/hp_max)*50,10);
   }
 }

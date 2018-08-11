@@ -53,7 +53,7 @@ void setup(){
   map_objekter = new map_objekt[0];
   enemies = new enemy[1];
   
-  enemies[0] = new enemy(100,100,"normal",4,1,100);
+  enemies[0] = new enemy("normal",4,100);
   
   //loader mappet
   Bane_Creater("/Baner/Bane_1/Map.txt"); //skriv navnet på filen der skal indlæses
@@ -110,6 +110,12 @@ void draw(){
   
   //draw enemy
   for(int i = 0 ; i < enemies.length ; i++){
+    if(enemies[i].hp <= 0){
+      enemies = (enemy[])concat(subset(enemies,0,i),subset(enemies,i+1,enemies.length-i-1));
+      enemies = (enemy[])append(enemies,new enemy("normal",4,100));
+      
+      
+    }
     enemies[i].update();
   }
   

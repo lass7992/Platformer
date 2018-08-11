@@ -21,7 +21,7 @@ class rope{
 
 class bullet{
   int xpos, ypos, speed;
-  int dir;
+  int dir, skade;
   String type;
   
   bullet(int x, int y, String temp_type, int temp_speed){
@@ -30,6 +30,7 @@ class bullet{
     type = temp_type;
     speed = temp_speed;
     dir = -hero_dir;
+    skade = 50;
   }
   
   
@@ -37,6 +38,18 @@ class bullet{
 
     xpos += dir*speed;
     draw();
+    
+      //collision detection
+    for(int i = 0 ; i < enemies.length ; i++){
+      if(Collision_skud(enemies[i].xpos,enemies[i].ypos) == true){
+        enemies[i].hp -= skade;
+      }
+    }
+
+    for(int i = 0 ; i < map_objekter.length ; i++){
+      Collision_skud(map_objekter[i].xpos,map_objekter[i].ypos+40);
+    }
+      
   }
   
   void draw(){
@@ -67,7 +80,7 @@ class muffin{
   void update(){
     if(x_pos < xpos+40 && x_pos > xpos-40 && y_pos < ypos+30 && y_pos > ypos-30){
       taken = true;
-      current_bullet_speed = int(random(1,10));
+      current_bullet_speed = int(random(5,15));
       current_bullet = "hej";
       muffin_instance = new muffin(int(random(100,800)),500); 
     }

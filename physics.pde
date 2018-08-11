@@ -38,7 +38,10 @@ boolean Collision_skud( int x, int y){
   for(int i = 0 ; i < bullets.length ; i++){
     if(x < bullets[i].xpos+40 && x > bullets[i].xpos-40 && y < bullets[i].ypos+35 &&  y > bullets[i].ypos-35){
       hit = true;
-      break;
+      bullets = (bullet[])concat(subset(bullets,0,i),subset(bullets,i+1,bullets.length-i-1));
+
+      
+      break;      
     }
   }
   return hit;
