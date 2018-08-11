@@ -13,10 +13,9 @@ int x_pos = 100;
 int y_pos = 100;
 int jump_counter = 0;
 int invis_counter = 0;
-<<<<<<< HEAD
-=======
+
 int score = 0;
->>>>>>> Lasses-branch
+
 
   //boolean
 boolean jumping = false;
@@ -27,10 +26,7 @@ PShape s;
 PImage background_img;
 PImage current_hero;
 PImage floor_tile;
-<<<<<<< HEAD
-=======
 PImage rope_spr;
->>>>>>> Lasses-branch
 PImage HP_img;
 
 
@@ -41,10 +37,7 @@ bullet [] bullets;
 map_objekt [] map_objekter;
 enemy [] enemies;
 PImage [] enemy_img;
-<<<<<<< HEAD
-=======
 PImage [] super_enemy_img;
->>>>>>> Lasses-branch
 
 //String
 String current_bullet = "normal";
@@ -68,10 +61,8 @@ void setup(){
   map_objekter = new map_objekt[0];
   enemies = new enemy[1];
   enemy_img = new PImage[6];
-<<<<<<< HEAD
-=======
   super_enemy_img = new PImage[1];
->>>>>>> Lasses-branch
+
   
   
   enemies[0] = new enemy("normal",4,100);
@@ -148,11 +139,7 @@ void draw(){
   }
   
     //hp
-<<<<<<< HEAD
-  draw_liv();
-=======
   draw_hud();
->>>>>>> Lasses-branch
   
   
   //draw muffin
