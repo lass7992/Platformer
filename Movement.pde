@@ -42,6 +42,9 @@ void keyPressed(){
       jumping = true;
     }
   }
+  if(key=='e'){
+    bullets = (bullet[])append(bullets,new bullet(x_pos+hero_dir*(-80),y_pos,current_bullet,current_bullet_speed));
+  }
 }
 void keyReleased(){
     if(key=='a')
