@@ -20,6 +20,7 @@ boolean gravity_able = true;
   
   //billeder
 PShape s;
+PImage background_img;
 
 
 //arrays
@@ -50,8 +51,9 @@ void setup(){
   ropes = new rope[0];
   bullets = new bullet[0];
   
-  
+  //loader billeder
   s = loadShape("soldier.svg");
+  background_img =  loadImage("/Backgrounds/Background_HAHA.png");
   
   size(10,10);
   surface.setSize(screen_x, screen_y);
@@ -89,7 +91,7 @@ void draw(){
   
 
   //draw
-  background(204);
+  draw_background();
   
   
   for(int i = 0 ; i < bullets.length ; i++){  //updatere skydne

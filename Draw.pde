@@ -15,3 +15,9 @@ void draw_rope(int x,int y){
   fill(200,50,100);
   rect(x,y,20,64);
 }
+
+void draw_background(){
+  pushMatrix();
+  image(background_img,0,0);
+  popMatrix();
+}
