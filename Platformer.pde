@@ -21,6 +21,7 @@ boolean gravity_able = true;
   //billeder
 PShape s;
 PImage background_img;
+PImage current_hero;
 
 
 //arrays
@@ -58,6 +59,7 @@ void setup(){
   
   //loader billeder
   s = loadShape("soldier.svg");
+  current_hero = loadImage("/Hero/Hero1/Hero_standing_spr.png");
   background_img =  loadImage("/Backgrounds/Background_HAHA.png");
   
   size(10,10);

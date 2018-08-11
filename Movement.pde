@@ -2,7 +2,7 @@ void MovementChecker(){
   if( keys[0]) 
   {  
     if (true == true){
-      x_pos -= 2;
+      x_pos -= 4;
       hero_dir = 1;
     }
   }
@@ -22,7 +22,7 @@ void MovementChecker(){
   if( keys[3]) 
   {
     if (true == true){
-      x_pos += 2;
+      x_pos += 4;
       hero_dir = -1;
     }
   }
