@@ -1,4 +1,3 @@
-
   //spil data
 int bane_x_length = 800;
 int bane_y_length = 800;
@@ -6,7 +5,9 @@ int screen_x = 1020;
 int screen_y = 700;
 
 int hero_dir = -1;
-  
+
+int current_bullet_speed = 10;
+
   
   // int
 int x_pos = 100;
@@ -25,7 +26,14 @@ PShape s;
 floor [] floor_instances;
 boolean[] keys;
 rope [] ropes;
+bullet [] bullets;
 
+
+//String
+String current_bullet = "normal";
+
+//objects
+muffin muffin_instance = new muffin(400,500);
 
 
 void setup(){  
@@ -37,9 +45,11 @@ void setup(){
 
   
   
-  
+  //opsætter arrays
   floor_instances = new floor[0];
   ropes = new rope[0];
+  bullets = new bullet[0];
+  
   
   s = loadShape("soldier.svg");
   
@@ -75,8 +85,17 @@ void draw(){
   }
   
 
+
+  
+
   //draw
   background(204);
+  
+  
+  for(int i = 0 ; i < bullets.length ; i++){  //updatere skydne
+    bullets[i].update();
+  }
+
   
   draw_hero();
   
@@ -86,6 +105,11 @@ void draw(){
   for(int i = 0 ; i < ropes.length ; i++){
     draw_rope(ropes[i].xpos,ropes[i].ypos);
   }
+  
+  //draw muffin
+    muffin_instance.update();
+  
+
   
   
 };
