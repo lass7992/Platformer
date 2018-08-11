@@ -13,6 +13,7 @@ int x_pos = 100;
 int y_pos = 100;
 int jump_counter = 0;
 int invis_counter = 0;
+int score = 0;
 
   //boolean
 boolean jumping = false;
@@ -23,6 +24,7 @@ PShape s;
 PImage background_img;
 PImage current_hero;
 PImage floor_tile;
+PImage rope_spr;
 PImage HP_img;
 
 
@@ -33,6 +35,7 @@ bullet [] bullets;
 map_objekt [] map_objekter;
 enemy [] enemies;
 PImage [] enemy_img;
+PImage [] super_enemy_img;
 
 //String
 String current_bullet = "normal";
@@ -56,6 +59,7 @@ void setup(){
   map_objekter = new map_objekt[0];
   enemies = new enemy[1];
   enemy_img = new PImage[6];
+  super_enemy_img = new PImage[1];
   
   
   enemies[0] = new enemy("normal",4,100);
@@ -126,15 +130,13 @@ void draw(){
   for(int i = 0 ; i < enemies.length ; i++){
     if(enemies[i].hp <= 0){
       enemies = (enemy[])concat(subset(enemies,0,i),subset(enemies,i+1,enemies.length-i-1));
-      enemies = (enemy[])append(enemies,new enemy("normal",4,100));
-      
-      
+      enemies = (enemy[])append(enemies,new enemy("normal",4,100)); 
     }
     enemies[i].update();
   }
   
     //hp
-  draw_liv();
+  draw_hud();
   
   
   //draw muffin

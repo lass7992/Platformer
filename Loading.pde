@@ -9,10 +9,10 @@ void load_billeder(){
   background_img =  loadImage("/Baner/Bane_1/Background.png");
   floor_tile = loadImage("/Baner/Bane_1/floor.png");
   HP_img = loadImage("/spr/HP.png");
-  
+  rope_spr = loadImage("/Baner/Bane_1/rope.png");
   
   for(int i = 0; i < 6; i++){
     enemy_img[i] = loadImage("/Baner/Bane_1/enemy/enemy_1/" + str(i) + ".png");
   }
-
+  super_enemy_img[0] = loadImage("/Baner/Bane_1/enemy/enemy_2/" + str(1) + ".png");
 }
