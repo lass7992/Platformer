@@ -14,6 +14,7 @@ int y_pos = 100;
 int jump_counter = 0;
 int invis_counter = 0;
 int score = 0;
+int super_charge=0;
 
 //boolean
 boolean jumping = false;

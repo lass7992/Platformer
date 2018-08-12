@@ -19,6 +19,7 @@ class enemy {
     hp = temp_hp;
     hp_max = hp;
     billede_index = 0;
+    super_charge++;
   }
 
   void update() {
@@ -60,11 +61,15 @@ class enemy {
 
   void draw() {
     pushMatrix();
-    translate(xpos, ypos);
-    scale(-dir, 1);
-    image(enemy_img[round(billede_index/5)], -20, -40, 50, 80);
-    popMatrix();
-    fill(0, 255, 0);
+      translate(xpos, ypos);
+      scale(-dir, 1);
+      if(type == "normal"){
+        image(enemy_img[round(billede_index/5)], -20, -40, 50, 80);
+      }else{
+        image(super_enemy_img[round(billede_index/billede_index)-1], -20, -40, 80, 80);
+      }
+      popMatrix();
+      fill(0, 255, 0);
     rect(xpos-25, ypos-40, (float(hp)/hp_max)*50, 10);
   }
 }
