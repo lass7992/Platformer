@@ -1,0 +1,46 @@
+{"skeleton":{"images":""},
+"bones":[{"name":"root"}],
+"slots":[
+	{"name":"slice17","bone":"root","attachment":"slice17"},
+	{"name":"slice16","bone":"root","attachment":"slice16"},
+	{"name":"slice15","bone":"root","attachment":"slice15"},
+	{"name":"slice14","bone":"root","attachment":"slice14"},
+	{"name":"slice13","bone":"root","attachment":"slice13"},
+	{"name":"slice12","bone":"root","attachment":"slice12"},
+	{"name":"slice11","bone":"root","attachment":"slice11"},
+	{"name":"slice10","bone":"root","attachment":"slice10"},
+	{"name":"slice9","bone":"root","attachment":"slice9"},
+	{"name":"slice8","bone":"root","attachment":"slice8"},
+	{"name":"slice7","bone":"root","attachment":"slice7"},
+	{"name":"slice6","bone":"root","attachment":"slice6"},
+	{"name":"slice5","bone":"root","attachment":"slice5"},
+	{"name":"slice4","bone":"root","attachment":"slice4"},
+	{"name":"slice3","bone":"root","attachment":"slice3"},
+	{"name":"slice2","bone":"root","attachment":"slice2"},
+	{"name":"slice1","bone":"root","attachment":"slice1"},
+	{"name":"Samurai","bone":"root","attachment":"Samurai"}
+],
+"skins":{
+	"default":{
+		"slice17":{"slice17":{"x":958.5,"y":534,"width":71,"height":98}},
+		"slice16":{"slice16":{"x":928.5,"y":489,"width":95,"height":84}},
+		"slice15":{"slice15":{"x":1121,"y":645,"width":310,"height":504}},
+		"slice14":{"slice14":{"x":1001,"y":486.5,"width":118,"height":241}},
+		"slice13":{"slice13":{"x":1034,"y":371.5,"width":88,"height":99}},
+		"slice12":{"slice12":{"x":1051,"y":296,"width":64,"height":100}},
+		"slice11":{"slice11":{"x":959,"y":367.5,"width":88,"height":99}},
+		"slice10":{"slice10":{"x":942,"y":295.5,"width":64,"height":101}},
+		"slice9":{"slice9":{"x":994,"y":471.5,"width":88,"height":193}},
+		"slice8":{"slice8":{"x":939,"y":562.5,"width":68,"height":55}},
+		"slice7":{"slice7":{"x":969.5,"y":560,"width":19,"height":68}},
+		"slice6":{"slice6":{"x":1018,"y":559.5,"width":20,"height":67}},
+		"slice5":{"slice5":{"x":1008.5,"y":712,"width":163,"height":280}},
+		"slice4":{"slice4":{"x":1093.5,"y":549,"width":133,"height":100}},
+		"slice3":{"slice3":{"x":1104,"y":491.5,"width":108,"height":117}},
+		"slice2":{"slice2":{"x":887,"y":463.5,"width":72,"height":51}},
+		"slice1":{"slice1":{"x":817,"y":460.5,"width":694,"height":21}},
+		"Samurai":{"Samurai":{"x":960,"y":540,"width":1920,"height":1080}}
+	}
+},
+"animations":{"animation":{}}
+}
