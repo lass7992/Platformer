@@ -1,4 +1,4 @@
-  //spil data
+//spil data
 int screen_x = 1020;
 int screen_y = 700;
 
@@ -7,19 +7,19 @@ int hero_liv = 3;
 
 int current_bullet_speed = 10;
 
-  
-  // int
+
+// int
 int x_pos = 100;
 int y_pos = 100;
 int jump_counter = 0;
 int invis_counter = 0;
 int score = 0;
 
-  //boolean
+//boolean
 boolean jumping = false;
 boolean gravity_able = true;
-  
-  //billeder
+
+//billeder
 PShape s;
 PImage background_img;
 PImage current_hero;
@@ -41,18 +41,18 @@ PImage [] super_enemy_img;
 String current_bullet = "normal";
 
 //objects
-muffin muffin_instance = new muffin(400,500);
+muffin muffin_instance = new muffin(400, 500);
 
 
-void setup(){  
+void setup() {  
   keys=new boolean[4];
   keys[0]=false;
   keys[1]=false;
   keys[2]=false;
   keys[3]=false;
 
-  
-  
+
+
   //opsætter arrays
   ropes = new rope[0];
   bullets = new bullet[0];
@@ -60,93 +60,89 @@ void setup(){
   enemies = new enemy[1];
   enemy_img = new PImage[6];
   super_enemy_img = new PImage[1];
-  
-  
-  enemies[0] = new enemy("normal",4,100);
-  
+
+
+  enemies[0] = new enemy("normal", 4, 100);
+
   //loader mappen og billeder
   load_billeder();
 
-  size(10,10);
+  size(10, 10);
   surface.setSize(screen_x, screen_y);
   frameRate(60);
-  
-  
 }
 
 
 
-void draw(){
-  
+void draw() {
+
   //controllers and checkers
   gravity();
   MovementChecker();
-  if(jumping == true){
+  if (jumping == true) {
     jump();
   }
-  if(gravity_able == false && collision_rope() == true){
+  if (gravity_able == false && collision_rope() == true) {
     gravity_able = true;
   }
   //enemy hit
-  if(invis_counter == 0){
-    if(Collision_enermy(x_pos,y_pos) == true){  
+  if (invis_counter == 0) {
+    if (Collision_enermy(x_pos, y_pos) == true) {  
       hero_liv--;
       invis_counter = 100;
     }
-  }else{
+  } else {
     invis_counter--;
   }
-  
 
 
-  
+
+
 
   //draw
   draw_background();
-  
-  
-  for(int i = 0 ; i < bullets.length ; i++){  //updatere skydne
-    if(bullets[i].xpos < 0 || bullets[i].xpos > screen_x){
-      bullets = (bullet[])concat(subset(bullets,0,i),subset(bullets,i+1,bullets.length-i-1));
-      continue; 
+
+
+  for (int i = 0; i < bullets.length; i++) {  //updatere skydne
+    if (bullets[i].xpos < 0 || bullets[i].xpos > screen_x) {
+      bullets = (bullet[])concat(subset(bullets, 0, i), subset(bullets, i+1, bullets.length-i-1));
+      continue;
     }
     bullets[i].update();
-
   }
 
-  
+
   draw_hero();
-  
+
   // draw map
-  for(int i = 0 ; i < map_objekter.length ; i++){
+  for (int i = 0; i < map_objekter.length; i++) {
     draw_floor(map_objekter[i].xpos, map_objekter[i].ypos);
   } 
   // rope
-  for(int i = 0 ; i < ropes.length ; i++){
-    draw_rope(ropes[i].xpos,ropes[i].ypos);
+  for (int i = 0; i < ropes.length; i++) {
+    draw_rope(ropes[i].xpos, ropes[i].ypos);
   }
-  
+
   //draw enemy
-  for(int i = 0 ; i < enemies.length ; i++){
-    if(enemies[i].hp <= 0){
-      enemies = (enemy[])concat(subset(enemies,0,i),subset(enemies,i+1,enemies.length-i-1));
-      enemies = (enemy[])append(enemies,new enemy("normal",4,100)); 
+  for (int i = 0; i < enemies.length; i++) {
+    if (enemies[i].hp <= 0) {
+      enemies = (enemy[])concat(subset(enemies, 0, i), subset(enemies, i+1, enemies.length-i-1));
+      enemies = (enemy[])append(enemies, new enemy("normal", 4, 100));
     }
     enemies[i].update();
   }
-  
-    //hp
-  draw_hud();
-  
-  
-  //draw muffin
-    muffin_instance.update();
-  
 
-  if(hero_liv == 0){
+  //hp
+  draw_hud();
+
+
+  //draw muffin
+  muffin_instance.update();
+
+
+  if (hero_liv == 0) {
     textSize(93); 
     text("GAME OVER", 400, 400); 
     noLoop();
   }
-  
 };
