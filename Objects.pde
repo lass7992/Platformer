@@ -77,18 +77,18 @@ class muffin {
       taken = true;
       current_bullet_speed = int(random(5, 15));
       current_bullet = "hej";
-      muffin_instance = new muffin(int(random(100, 800)), 500); 
       
-      //laver en ny enemy
-      if(super_charge < 10){
-        enemies = (enemy[])append(enemies, new enemy("normal", 4, 100));
-      }else{
-        super_charge -= 10;
-        enemies = (enemy[])append(enemies, new enemy("super", 6, 200));
-      }
+      int temp_y;
+      if (random(1) >= 0.5) {temp_y = 500;} else {temp_y =200;}
+        
+      muffin_instance = new muffin(int(random(100, 800)), temp_y); 
+      
+      //sætter spawn raten ned
+      enemy_spawn_rate -= int(float(enemy_spawn_rate)/30);
+
       
       
-      score++;
+      score += 10;
     }
 
     if (taken == false) {

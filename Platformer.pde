@@ -1,20 +1,24 @@
-//spil data
+// int
+  //spil data
 int screen_x = 1020;
 int screen_y = 700;
-
 int hero_dir = -1;
 int hero_liv = 3;
-
 int current_bullet_speed = 10;
-
-
-// int
 int x_pos = 100;
 int y_pos = 100;
+
+    //Game variabler
+float time = 0;
+float past_time = millis();
+
+  //others
 int jump_counter = 0;
 int invis_counter = 0;
 int score = 0;
 int super_charge=0;
+int enemy_spawn_rate = 4000;
+
 
 //boolean
 boolean jumping = false;
@@ -78,6 +82,8 @@ void setup() {
 void draw() {
 
   //controllers and checkers
+  Time_Controllers();
+  
   gravity();
   MovementChecker();
   if (jumping == true) {
@@ -126,11 +132,11 @@ void draw() {
 
   //draw enemy
   for (int i = 0; i < enemies.length; i++) {
+    enemies[i].update();
     if (enemies[i].hp <= 0) {
       enemies = (enemy[])concat(subset(enemies, 0, i), subset(enemies, i+1, enemies.length-i-1));
-      enemies = (enemy[])append(enemies, new enemy("normal", 4, 100));
     }
-    enemies[i].update();
+
   }
 
   //hp

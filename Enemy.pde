@@ -1,6 +1,7 @@
 class enemy {
   int xpos, ypos, speed, dir, hp, hp_max, billede_index;
   String type;
+  boolean angry;
 
   enemy( String temp_type, int temp_speed, int temp_hp) {
     if (random(1) >= 0.5) {
@@ -11,15 +12,13 @@ class enemy {
     ypos = 100;
     speed = temp_speed;
     type = temp_type;
-    if (random(1) >= 0.5) {
-      dir = 1;
-    } else {
-      dir = -1;
+    if (random(1) >= 0.5) {dir = 1;} else {dir = -1;
     }
     hp = temp_hp;
     hp_max = hp;
     billede_index = 0;
     super_charge++;
+    angry = false;
   }
 
   void update() {
@@ -37,6 +36,10 @@ class enemy {
         dir = -1;
       }
       ypos -= screen_y;
+      if(angry == false){
+        speed = speed *2;
+        angry = true;
+      }
       if (random(1) >= 0.5) {
         xpos = 100;
       } else {
@@ -63,11 +66,15 @@ class enemy {
     pushMatrix();
       translate(xpos, ypos);
       scale(-dir, 1);
+      if(angry == true){
+        tint(200,100,100);
+      }
       if(type == "normal"){
         image(enemy_img[round(billede_index/5)], -20, -40, 50, 80);
       }else{
         image(super_enemy_img[round(billede_index/billede_index)-1], -20, -40, 80, 80);
       }
+      noTint();
       popMatrix();
       fill(0, 255, 0);
     rect(xpos-25, ypos-40, (float(hp)/hp_max)*50, 10);
