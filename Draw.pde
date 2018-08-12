@@ -14,9 +14,14 @@ void draw_hero() {
   popMatrix();
 }
 
-void draw_rope(int x, int y) {
-  image(rope_spr, x, y);
-  fill(200, 50, 100);
+void draw_rope(int x, int y, boolean end) {
+  if(end == true){
+    image(rope_spr_end, x, y);
+  }else{
+    image(rope_spr, x, y);
+  }
+  
+  //fill(200, 50, 100);
   //rect(x,y,20,64);
 }
 

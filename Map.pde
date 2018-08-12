@@ -5,10 +5,11 @@ void Bane_Creater(String file_name) {
       if (Bane_file[i].charAt(q) == 'f') {
         map_objekter = (map_objekt[])append(map_objekter, new map_objekt(64*q, 64*(i-2), true, "floor"));
       } else if (Bane_file[i].charAt(q) == 'r') {
-        ropes = (rope[])append(ropes, new rope(64*q+26, 64*(i-2)));
+        ropes = (rope[])append(ropes, new rope(64*q+26, 64*(i-2),false));
+        
       } else if (Bane_file[i].charAt(q) == 'R') {
         map_objekter = (map_objekt[])append(map_objekter, new map_objekt(64*q, 64*(i-2), true, "floor"));
-        ropes = (rope[])append(ropes, new rope(64*q+26, 64*(i-2)));
+        ropes = (rope[])append(ropes, new rope(64*q+26, 64*(i-2),true));
       } else if (Bane_file[i].charAt(q) == 'p') {
         x_pos = q*64;
         y_pos = i*64-130;

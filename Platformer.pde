@@ -1,7 +1,7 @@
 // int
   //spil data
-int screen_x = 1020;
-int screen_y = 700;
+int screen_x = 1250;
+int screen_y = 800;
 int hero_dir = -1;
 int hero_liv = 3;
 int current_bullet_speed = 10;
@@ -30,6 +30,7 @@ PImage background_img;
 PImage current_hero;
 PImage floor_tile;
 PImage rope_spr;
+PImage rope_spr_end;
 PImage HP_img;
 
 
@@ -127,7 +128,7 @@ void draw() {
   } 
   // rope
   for (int i = 0; i < ropes.length; i++) {
-    draw_rope(ropes[i].xpos, ropes[i].ypos);
+    draw_rope(ropes[i].xpos, ropes[i].ypos,ropes[i].end);
   }
 
   //draw enemy

@@ -1,13 +1,15 @@
 11
 18
 xxxx
-x
-ffffff     fffRf
-x             r
-x             r
-xxxxfRfffff   r
-x    r        r
-x    r       fRff
-x             r
-x p           r
-fffffffxxxffffffff
+fffffff     ffffffff
+x                
+x           
+x     
+xxxx  fRfffff  ffRff
+x      r         r
+       r        pr
+fffffffR      fffRff   
+x      r         r   
+x      r           
+x                   
+fffffffffxxxffffffff

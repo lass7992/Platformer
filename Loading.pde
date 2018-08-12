@@ -10,6 +10,7 @@ void load_billeder() {
   floor_tile = loadImage("/Baner/Bane_1/floor.png");
   HP_img = loadImage("/spr/HP.png");
   rope_spr = loadImage("/Baner/Bane_1/rope.png");
+  rope_spr_end = loadImage("/Baner/Bane_1/rope_end.png");
 
   for (int i = 0; i < 6; i++) {
     enemy_img[i] = loadImage("/Baner/Bane_1/enemy/enemy_1/" + str(i) + ".png");

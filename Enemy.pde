@@ -7,9 +7,9 @@ class enemy {
     if (random(1) >= 0.5) {
       xpos = 100;
     } else {
-      xpos = 700;
+      xpos = 900;
     }
-    ypos = 100;
+    ypos = 30;
     speed = temp_speed;
     type = temp_type;
     if (random(1) >= 0.5) {dir = 1;} else {dir = -1;

@@ -9,10 +9,12 @@ class floor {
 
 class rope {
   int xpos, ypos;
+  boolean end;
 
-  rope(int x, int y) {
+  rope(int x, int y, boolean temp_end) {
     xpos = x;
     ypos = y;
+    end = temp_end;
   }
 }
 
