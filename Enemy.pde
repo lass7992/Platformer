@@ -1,9 +1,13 @@
 class enemy {
-  int xpos, ypos, speed, dir, hp, hp_max, billede_index;
+  int xpos, ypos, speed, dir, hp, hp_max, billede_index,enemy_height, enemy_width;
   String type;
   boolean angry;
-
-  enemy( String temp_type, int temp_speed, int temp_hp) {
+  
+  enemy( String temp_type, int temp_speed, int temp_hp, int temp_enemy_width, int temp_enemy_height) {
+    enemy_width = temp_enemy_width;
+    enemy_height = temp_enemy_height;
+    
+    
     if (random(1) >= 0.5) {
       xpos = 100;
     } else {
@@ -12,14 +16,14 @@ class enemy {
     ypos = 30;
     speed = temp_speed;
     type = temp_type;
-    if (random(1) >= 0.5) {dir = 1;} else {dir = -1;
-    }
+    
+    if (random(1) >= 0.5) {dir = 1;} else {dir = -1;}
     hp = temp_hp;
     hp_max = hp;
     billede_index = 0;
     super_charge++;
     angry = false;
-  }
+   }
 
   void update() {
 
@@ -47,7 +51,7 @@ class enemy {
       }
     }
 
-    if (collision_down(xpos, ypos-14) == true) {
+    if (collision_down(xpos, ypos-14, enemy_width) == true) {
       ypos += 8;
     } else {
       xpos += dir*speed;
@@ -70,9 +74,9 @@ class enemy {
         tint(200,100,100);
       }
       if(type == "normal"){
-        image(enemy_img[round(billede_index/5)], -20, -40, 50, 80);
+        image(enemy_img[round(billede_index/5)], -enemy_width/2, -enemy_height/2, enemy_width, enemy_height);
       }else{
-        image(super_enemy_img[round(billede_index/billede_index)-1], -20, -40, 80, 80);
+        image(super_enemy_img[round(billede_index/billede_index)-1], -enemy_width/2, -enemy_height/2, enemy_width, enemy_height);
       }
       noTint();
       popMatrix();

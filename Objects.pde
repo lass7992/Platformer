@@ -30,7 +30,7 @@ class bullet {
     type = temp_type;
     speed = temp_speed;
     dir = -hero_dir;
-    skade = 50;
+    skade = current_bullet_skade;
   }
 
 
@@ -41,13 +41,13 @@ class bullet {
 
     //collision detection
     for (int i = 0; i < enemies.length; i++) {
-      if (Collision_skud(enemies[i].xpos, enemies[i].ypos) == true) {
+      if (Collision_skud(enemies[i].xpos, enemies[i].ypos, enemies[i].enemy_width, enemies[i].enemy_height) == true) {
         enemies[i].hp -= skade;
       }
     }
 
     for (int i = 0; i < map_objekter.length; i++) {
-      Collision_skud(map_objekter[i].xpos, map_objekter[i].ypos+40);
+      Collision_skud(map_objekter[i].xpos, map_objekter[i].ypos+40,30,20);
     }
   }
 
@@ -77,8 +77,8 @@ class muffin {
   void update() {
     if (x_pos < xpos+40 && x_pos > xpos-40 && y_pos < ypos+30 && y_pos > ypos-30) {
       taken = true;
-      current_bullet_speed = int(random(5, 15));
-      current_bullet = "hej";
+      new_Hero();
+
       
       int temp_y;
       if (random(1) >= 0.5) {temp_y = 500;} else {temp_y =200;}

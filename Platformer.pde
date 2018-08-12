@@ -1,3 +1,8 @@
+//game changer
+int max_hero = 3;
+
+
+
 // int
   //spil data
 int screen_x = 1250;
@@ -5,8 +10,22 @@ int screen_y = 800;
 int hero_dir = -1;
 int hero_liv = 3;
 int current_bullet_speed = 10;
+int current_bullet_skade = 50;
 int x_pos = 100;
 int y_pos = 100;
+int hero_width = 80;
+int hero_height = 140;
+int hero_width_offset; 
+int hero_height_offset;
+int hero_reletive_width;
+int hero_max_img;
+
+
+  //minions
+int super_charge=0;
+int enemy_spawn_rate = 4000;
+int [] normal_enemy_scale;
+int [] super_enemy_scale;
 
     //Game variabler
 float time = 0;
@@ -16,8 +35,7 @@ float past_time = millis();
 int jump_counter = 0;
 int invis_counter = 0;
 int score = 0;
-int super_charge=0;
-int enemy_spawn_rate = 4000;
+
 
 
 //boolean
@@ -66,12 +84,16 @@ void setup() {
   enemies = new enemy[1];
   enemy_img = new PImage[6];
   super_enemy_img = new PImage[1];
+  normal_enemy_scale = new int[2];
+  super_enemy_scale = new int[2];
 
 
-  enemies[0] = new enemy("normal", 4, 100);
 
   //loader mappen og billeder
   load_billeder();
+  
+  
+  enemies[0] = new enemy("normal", 4, 100, normal_enemy_scale[0], normal_enemy_scale[1]);
 
   size(10, 10);
   surface.setSize(screen_x, screen_y);

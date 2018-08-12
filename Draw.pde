@@ -9,7 +9,7 @@ void draw_hero() {
   if (invis_counter > 1) {
     tint(100, 100, 100);
   }    
-  image(current_hero, -130, -94, 87*2, 70*2);
+  image(current_hero, hero_width_offset, hero_height_offset, hero_width , hero_height );
   noTint();
   popMatrix();
 }

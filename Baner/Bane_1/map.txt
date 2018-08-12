@@ -1,13 +1,15 @@
-11
-18
+70
+70
+100
+100
 xxxx
 fffffff     ffffffff
 x                
 x           
 x     
 xxxx  fRfffff  ffRff
-x      r         r
-       r        pr
+x      r       p r
+       r         r
 fffffffR      fffRff   
 x      r         r   
 x      r           
