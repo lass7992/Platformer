@@ -8,10 +8,10 @@ void MovementChecker() {
   }
   if ( keys[1]) 
   {
-    if (collision_rope(x_pos,y_pos+10) == false) {
+    if (collision_rope(x_pos,y_pos+14) == false  && y_pos < screen_y-20-(hero_height/2)) {
       gravity_able = false;
       y_pos += 3;
-    }else if (collision_rope(x_pos,y_pos+10) == true) {
+    }else if (collision_rope(x_pos,y_pos+14) == true) {
       gravity_able = true;
     }
   }

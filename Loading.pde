@@ -22,7 +22,10 @@ void load_billeder() {
   for (int i = 0; i < 6; i++) {
     enemy_img[i] = loadImage("/Baner/Bane_1/enemy/enemy_1/" + str(i) + ".png");
   }
-  super_enemy_img[0] = loadImage("/Baner/Bane_1/enemy/enemy_2/" + str(1) + ".png");
+  for (int i = 0; i < 2; i++) {
+    super_enemy_img[i] = loadImage("/Baner/Bane_1/enemy/enemy_2/" + str(i+1) + ".png");
+  }
+  
 }
 
 
@@ -34,7 +37,7 @@ void Array_loading(){
   map_objekter = new map_objekt[0];
   enemies = new enemy[1];
   enemy_img = new PImage[6];
-  super_enemy_img = new PImage[1];
+  super_enemy_img = new PImage[2];
   normal_enemy_scale = new int[2];
   super_enemy_scale = new int[2];
   enemy_spawn_points = new int[0][0]; 

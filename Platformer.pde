@@ -24,7 +24,7 @@ int hero_index;
 
   //minions
 int super_charge=0;
-int enemy_spawn_rate = 4000;
+int enemy_spawn_rate = 3000;
 int [] normal_enemy_scale;
 int [] super_enemy_scale;
 int [][] enemy_spawn_points; 
