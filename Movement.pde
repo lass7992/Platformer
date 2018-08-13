@@ -8,16 +8,20 @@ void MovementChecker() {
   }
   if ( keys[1]) 
   {
-    if (true == true) {
-      //y += 3;
+    if (collision_rope(x_pos,y_pos+10) == false) {
+      gravity_able = false;
+      y_pos += 3;
+    }else if (collision_rope(x_pos,y_pos+10) == true) {
+      gravity_able = true;
     }
   }
   if ( keys[2]) 
   {  
-    if (collision_rope() == false) {
+    if (collision_rope(x_pos,y_pos) == false) {
       gravity_able = false;
       y_pos -= 3;
     }
+    
   }
   if ( keys[3]) 
   {
@@ -38,12 +42,12 @@ void keyPressed() {
   if (key=='d')
     keys[3]=true;
   if (key==' ') {
-    if (jumping == false) {
+    if (jumping == false &&  gravity_able == true) {
       jumping = true;
     }
   }
   if (key=='e') {
-    bullets = (bullet[])append(bullets, new bullet(x_pos+hero_dir*(-80), y_pos, current_bullet, current_bullet_speed));
+    bullets = (bullet[])append(bullets, new bullet(x_pos+hero_dir*(-80), y_pos, str(hero_index), current_bullet_speed));
   }
 }
 void keyReleased() {

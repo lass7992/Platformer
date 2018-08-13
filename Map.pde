@@ -22,6 +22,9 @@ void Bane_Creater(String file_name) {
       } else if (Bane_file[i].charAt(q) == 'p') {
         x_pos = q*64;
         y_pos = (i-4)*64;
+      }else if(Bane_file[i].charAt(q) == 's') {
+        enemy_spawn_points = (int[][])append(enemy_spawn_points, new int[64*q]);
+        enemy_spawn_points[enemy_spawn_points.length-1] = (int[])append(enemy_spawn_points[enemy_spawn_points.length-1], 64*(i-4));
       }
     }
   }

@@ -57,8 +57,11 @@ class bullet {
     } else {
       fill(200, 100, 100);
     }
-
-    ellipse(xpos, ypos, 32, 8);
+    pushMatrix();
+      translate(xpos, ypos);
+      scale(dir,1);
+      image(bullet_img[int(type)-1],0,0 );
+    popMatrix();
   }
 }
 
@@ -81,7 +84,7 @@ class muffin {
 
       
       int temp_y;
-      if (random(1) >= 0.5) {temp_y = 500;} else {temp_y =200;}
+      if (random(1) >= 0.5) {temp_y = 400;} else {temp_y =200;}
         
       muffin_instance = new muffin(int(random(100, 800)), temp_y); 
       

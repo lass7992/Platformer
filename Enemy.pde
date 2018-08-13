@@ -7,13 +7,11 @@ class enemy {
     enemy_width = temp_enemy_width;
     enemy_height = temp_enemy_height;
     
+    int i = round(random(enemy_spawn_points.length-1));
+
+    xpos = enemy_spawn_points[i][0];
+    ypos = enemy_spawn_points[i][1];
     
-    if (random(1) >= 0.5) {
-      xpos = 100;
-    } else {
-      xpos = 900;
-    }
-    ypos = 30;
     speed = temp_speed;
     type = temp_type;
     

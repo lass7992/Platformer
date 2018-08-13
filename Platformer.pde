@@ -1,6 +1,6 @@
 //game changer
 int max_hero = 3;
-
+int max_baner = 2;
 
 
 // int
@@ -19,6 +19,7 @@ int hero_width_offset;
 int hero_height_offset;
 int hero_reletive_width;
 int hero_max_img;
+int hero_index;
 
 
   //minions
@@ -26,6 +27,7 @@ int super_charge=0;
 int enemy_spawn_rate = 4000;
 int [] normal_enemy_scale;
 int [] super_enemy_scale;
+int [][] enemy_spawn_points; 
 
     //Game variabler
 float time = 0;
@@ -60,15 +62,25 @@ map_objekt [] map_objekter;
 enemy [] enemies;
 PImage [] enemy_img;
 PImage [] super_enemy_img;
+PImage [] bullet_img;
 
 //String
 String current_bullet = "normal";
+String Bane_nr;
 
 //objects
-muffin muffin_instance = new muffin(400, 500);
+muffin muffin_instance = new muffin(400, 400);
 
 
 void setup() {  
+  size(10, 10);
+  surface.setSize(screen_x, screen_y);
+  frameRate(60);
+  
+  //tegner loading
+  textSize(93); 
+  text("Loading", 400, 400); 
+  
   keys=new boolean[4];
   keys[0]=false;
   keys[1]=false;
@@ -78,26 +90,17 @@ void setup() {
 
 
   //opsætter arrays
-  ropes = new rope[0];
-  bullets = new bullet[0];
-  map_objekter = new map_objekt[0];
-  enemies = new enemy[1];
-  enemy_img = new PImage[6];
-  super_enemy_img = new PImage[1];
-  normal_enemy_scale = new int[2];
-  super_enemy_scale = new int[2];
-
-
-
+  Bane_nr = str(round(random(1, max_baner)));
+  
+  Array_loading();
+  
   //loader mappen og billeder
   load_billeder();
   
   
   enemies[0] = new enemy("normal", 4, 100, normal_enemy_scale[0], normal_enemy_scale[1]);
 
-  size(10, 10);
-  surface.setSize(screen_x, screen_y);
-  frameRate(60);
+
 }
 
 
@@ -112,7 +115,7 @@ void draw() {
   if (jumping == true) {
     jump();
   }
-  if (gravity_able == false && collision_rope() == true) {
+  if (gravity_able == false && collision_rope(x_pos,y_pos) == true) {
     gravity_able = true;
   }
   //enemy hit
