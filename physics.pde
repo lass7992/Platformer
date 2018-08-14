@@ -1,6 +1,9 @@
 void gravity() {
   if (collision_down(x_pos, y_pos, hero_reletive_width) == true && gravity_able == true) {
-    y_pos += 8;
+    y_pos += max(8, min(8+(gravity_counter)/2,20));
+    gravity_counter ++;
+  }else {
+    gravity_counter = 0;
   }
 }
 

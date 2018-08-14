@@ -20,6 +20,9 @@ int hero_height_offset;
 int hero_reletive_width;
 int hero_max_img;
 int hero_index;
+int score = 0;
+
+int players = 0;
 
 
   //minions
@@ -33,16 +36,18 @@ int [][] enemy_spawn_points;
 float time = 0;
 float past_time = millis();
 
-  //others
+  //counter
 int jump_counter = 0;
+int gravity_counter = 0;
 int invis_counter = 0;
-int score = 0;
 
 
 
 //boolean
 boolean jumping = false;
 boolean gravity_able = true;
+boolean menu_active = true;
+boolean game_active = false;
 
 //billeder
 PShape s;
@@ -77,9 +82,13 @@ void setup() {
   surface.setSize(screen_x, screen_y);
   frameRate(60);
   
-  //tegner loading
+    //laver en menu
+  menu();
+  
+    //tegner loading
   textSize(93); 
   text("Loading", 400, 400); 
+  
   
   keys=new boolean[4];
   keys[0]=false;
@@ -106,76 +115,86 @@ void setup() {
 
 
 void draw() {
-
-  //controllers and checkers
-  Time_Controllers();
   
-  gravity();
-  MovementChecker();
-  if (jumping == true) {
-    jump();
+  if(menu_active == true){
+    game_active = false;
+    menu();
+    
   }
-  if (gravity_able == false && collision_rope(x_pos,y_pos) == true) {
-    gravity_able = true;
-  }
-  //enemy hit
-  if (invis_counter == 0) {
-    if (Collision_enermy(x_pos, y_pos) == true) {  
-      hero_liv--;
-      invis_counter = 100;
+  
+  
+  if(game_active == true){
+    //controllers and checkers
+    Time_Controllers();
+    
+    gravity();
+    MovementChecker();
+    if (jumping == true) {
+      jump();
     }
-  } else {
-    invis_counter--;
-  }
-
-
-
-
-
-  //draw
-  draw_background();
-
-
-  for (int i = 0; i < bullets.length; i++) {  //updatere skydne
-    if (bullets[i].xpos < 0 || bullets[i].xpos > screen_x) {
-      bullets = (bullet[])concat(subset(bullets, 0, i), subset(bullets, i+1, bullets.length-i-1));
-      continue;
+    if (gravity_able == false && collision_rope(x_pos,y_pos) == true) {
+      gravity_able = true;
     }
-    bullets[i].update();
-  }
-
-
-  draw_hero();
-
-  // draw map
-  for (int i = 0; i < map_objekter.length; i++) {
-    draw_floor(map_objekter[i].xpos, map_objekter[i].ypos);
-  } 
-  // rope
-  for (int i = 0; i < ropes.length; i++) {
-    draw_rope(ropes[i].xpos, ropes[i].ypos,ropes[i].end);
-  }
-
-  //draw enemy
-  for (int i = 0; i < enemies.length; i++) {
-    enemies[i].update();
-    if (enemies[i].hp <= 0) {
-      enemies = (enemy[])concat(subset(enemies, 0, i), subset(enemies, i+1, enemies.length-i-1));
+    //enemy hit
+    if (invis_counter == 0) {
+      if (Collision_enermy(x_pos, y_pos) == true) {  
+        hero_liv--;
+        invis_counter = 100;
+      }
+    } else {
+      invis_counter--;
     }
-
-  }
-
-  //hp
-  draw_hud();
-
-
-  //draw muffin
-  muffin_instance.update();
-
-
-  if (hero_liv == 0) {
-    textSize(93); 
-    text("GAME OVER", 400, 400); 
-    noLoop();
+  
+  
+  
+  
+  
+    //draw
+    draw_background();
+  
+  
+    for (int i = 0; i < bullets.length; i++) {  //updatere skydne
+      if (bullets[i].xpos < 0 || bullets[i].xpos > screen_x) {
+        bullets = (bullet[])concat(subset(bullets, 0, i), subset(bullets, i+1, bullets.length-i-1));
+        continue;
+      }
+      bullets[i].update();
+    }
+  
+  
+    draw_hero();
+  
+    // draw map
+    for (int i = 0; i < map_objekter.length; i++) {
+      draw_floor(map_objekter[i].xpos, map_objekter[i].ypos);
+    } 
+    // rope
+    for (int i = 0; i < ropes.length; i++) {
+      draw_rope(ropes[i].xpos, ropes[i].ypos,ropes[i].end);
+    }
+  
+    //draw enemy
+    for (int i = 0; i < enemies.length; i++) {
+      enemies[i].update();
+      if (enemies[i].hp <= 0) {
+        enemies = (enemy[])concat(subset(enemies, 0, i), subset(enemies, i+1, enemies.length-i-1));
+      }
+  
+    }
+  
+    //hp
+    draw_hud();
+  
+  
+    //draw muffin
+    muffin_instance.update();
+  
+  
+  ///// TODOD
+    if (hero_liv == 0) {
+      textSize(93); 
+      text("GAME OVER", 400, 400); 
+      noLoop();
+    }
   }
 };
