@@ -1,6 +1,9 @@
 void gravity() {
   if (collision_down(x_pos, y_pos, hero_reletive_width) == true && gravity_able == true) {
-    y_pos += 8;
+    y_pos += max(8, min(8+(gravity_counter)/2,20));
+    gravity_counter ++;
+  }else {
+    gravity_counter = 0;
   }
 }
 
@@ -9,7 +12,7 @@ boolean collision_down(int x, int y, int int_reletive_width) {
 
 
   for (int i = 0; i < map_objekter.length; i++) {
-    if (x-(int_reletive_width/2) < map_objekter[i].xpos+32 && x+(int_reletive_width/2) > map_objekter[i].xpos-32 && y+8 < map_objekter[i].ypos &&  y+8 > map_objekter[i].ypos-40) {
+    if (x-(int_reletive_width/2) < map_objekter[i].xpos+64 && x+(int_reletive_width/2) > map_objekter[i].xpos && y+8 < map_objekter[i].ypos &&  y+8 > map_objekter[i].ypos-40) {
       able = false;
       break;
     }
@@ -18,12 +21,12 @@ boolean collision_down(int x, int y, int int_reletive_width) {
   return able;
 }
 
-boolean collision_rope() {
+boolean collision_rope(int x, int y) {
   boolean able = true;
 
 
   for (int i = 0; i < ropes.length; i++) {
-    if (x_pos < ropes[i].xpos+hero_width && x_pos > ropes[i].xpos-hero_width && y_pos < ropes[i].ypos+hero_width &&  y_pos > ropes[i].ypos-hero_width) {
+    if (x-(hero_reletive_width/2) < ropes[i].xpos+16 && x+(hero_reletive_width/2) > ropes[i].xpos+16 && y-(hero_height) < ropes[i].ypos+32 &&  y > ropes[i].ypos-32) {
       able = false;
       break;
     }
@@ -36,7 +39,7 @@ boolean collision_rope() {
 boolean Collision_skud( int x, int y, int int_width, int int_height) {  
   boolean hit = false;
   for (int i = 0; i < bullets.length; i++) {
-    if (x < bullets[i].xpos+(int_width/2-15) && x > bullets[i].xpos-(int_width/2-15) && y < bullets[i].ypos+(int_height/2-20) &&  y > bullets[i].ypos-(int_height/2-20)) {
+    if (x-(int_width/2) < bullets[i].xpos+6 && x+(int_width/2) > bullets[i].xpos-6 && y-(int_height/2-20) < bullets[i].ypos+6 &&  y+(int_height/2) > bullets[i].ypos-6) {
       hit = true;
       bullets = (bullet[])concat(subset(bullets, 0, i), subset(bullets, i+1, bullets.length-i-1));
 

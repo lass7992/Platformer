@@ -1,9 +1,13 @@
 void load_billeder() {
   //loader mappet
-  Bane_Creater("/Baner/Bane_1/Map.txt"); //skriv navnet på filen der skal indlæses
+  Bane_Creater("/Baner/Bane_"+ Bane_nr +"/Map.txt"); //skriv navnet på filen der skal indlæses
 
   //loader helte
   new_Hero();
+  //loader bullets
+  for(int i = 0; i < max_hero; i++){
+    bullet_img = (PImage[])append(bullet_img, loadImage("/Hero/Hero" + str(i+1) + "/bullet.png"));
+  }
 
   //loader billeder
   s = loadShape("soldier.svg");
@@ -25,4 +29,25 @@ void load_billeder() {
   }
 
   super_enemy_img[0] = loadImage("/Baner/Bane_1/enemy/enemy_2/" + str(1) + ".png");
+  for (int i = 0; i < 2; i++) {
+    super_enemy_img[i] = loadImage("/Baner/Bane_1/enemy/enemy_2/" + str(i+1) + ".png");
+  }
+  
+}
+
+
+
+void Array_loading(){
+  bullet_img = new PImage[0];
+  ropes = new rope[0];
+  bullets = new bullet[0];
+  map_objekter = new map_objekt[0];
+  enemies = new enemy[1];
+  enemy_img = new PImage[6];
+  super_enemy_img = new PImage[2];
+  normal_enemy_scale = new int[2];
+  super_enemy_scale = new int[2];
+  enemy_spawn_points = new int[0][0]; 
+
+
 }

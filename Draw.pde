@@ -34,7 +34,10 @@ void draw_rope(int x, int y, boolean end) {
 
 void draw_background() {
   pushMatrix();
+  
+  tint(250,200,250);
   image(background_img, 0, 0);
+  noTint();
   popMatrix();
 }
 

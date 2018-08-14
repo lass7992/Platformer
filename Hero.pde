@@ -1,5 +1,5 @@
 void new_Hero(){
-  int hero_index = int(round(random(1,3)));
+  hero_index = int(round(random(1,3)));
   
   String [] Hero_file = loadStrings("/Hero/Hero" + str(hero_index)+"/Hero_data.txt");
   current_hero = loadImage("/Hero/Hero" + str(hero_index)+"/Hero_spr.png");

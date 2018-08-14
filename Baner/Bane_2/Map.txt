@@ -3,15 +3,15 @@
 100
 100
 xxs      s       s
-ffff   fffff   fffff
+ffff   fffffffff  ff
 x                
 x           
 x     
-xxxx  fRfffff   fRff
+xxxxfffRfffff   fRff
 x      r       p r
        r         r
-fffffffR     ffffRff   
+  fffffRfff   fffRff   
 x      r         r   
 x      r           
 x                   
-fffffffffxxxffffffff
+fffxxxffffffffxxxfff
