@@ -1,9 +1,7 @@
 void load_billeder() {
   //loader mappet
   Bane_Creater("/Baner/Bane_"+ Bane_nr +"/Map.txt"); //skriv navnet på filen der skal indlæses
-
-  //loader helte
-  new_Hero();
+  
   //loader bullets
   for(int i = 0; i < max_hero; i++){
     bullet_img = (PImage[])append(bullet_img, loadImage("/Hero/Hero" + str(i+1) + "/bullet.png"));
@@ -41,6 +39,4 @@ void Array_loading(){
   normal_enemy_scale = new int[2];
   super_enemy_scale = new int[2];
   enemy_spawn_points = new int[0][0]; 
-
-
 }

@@ -72,3 +72,14 @@ void jump() {
     jumping = false;
   }
 }
+void jump_2() {
+  if (jump_counter_2 < 20 ) {
+    jump_counter_2++;
+    y_pos_2 -= min(40-jump_counter_2*2, 30);
+  } else if (jump_counter_2 < 35) {
+    jump_counter_2++;
+  } else {
+    jump_counter_2 = 0;
+    jumping_2 = false;
+  }
+}

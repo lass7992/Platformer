@@ -6,18 +6,24 @@ void gravity() {
     gravity_counter = 0;
   }
 }
+void gravity_2() {
+  if (collision_down(x_pos_2, y_pos_2, hero_reletive_width_2) == true && gravity_able_2 == true) {
+    y_pos_2 += max(8, min(8+(gravity_counter_2)/2,20));
+    gravity_counter_2 ++;
+  }else {
+    gravity_counter_2 = 0;
+  }
+}
+
 
 boolean collision_down(int x, int y, int int_reletive_width) {
   boolean able = true;
-
-
   for (int i = 0; i < map_objekter.length; i++) {
     if (x-(int_reletive_width/2) < map_objekter[i].xpos+64 && x+(int_reletive_width/2) > map_objekter[i].xpos && y+8 < map_objekter[i].ypos &&  y+8 > map_objekter[i].ypos-40) {
       able = false;
       break;
     }
   }
-
   return able;
 }
 

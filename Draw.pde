@@ -1,3 +1,56 @@
+void draw_game(){
+    //draw
+    draw_background();
+  
+  
+    for (int i = 0; i < bullets.length; i++) {  //updatere skydne
+      if (bullets[i].xpos < 0 || bullets[i].xpos > screen_x) {
+        bullets = (bullet[])concat(subset(bullets, 0, i), subset(bullets, i+1, bullets.length-i-1));
+        continue;
+      }
+      bullets[i].update();
+    }
+  
+  
+    draw_hero();
+    if(players == 2){
+      draw_hero_2();
+    }
+    
+  
+    // draw map
+    for (int i = 0; i < map_objekter.length; i++) {
+      draw_floor(map_objekter[i].xpos, map_objekter[i].ypos);
+    } 
+    // rope
+    for (int i = 0; i < ropes.length; i++) {
+      draw_rope(ropes[i].xpos, ropes[i].ypos,ropes[i].end);
+    }
+  
+    //draw enemy
+    for (int i = 0; i < enemies.length; i++) {
+      enemies[i].update();
+      if (enemies[i].hp <= 0) {
+        enemies = (enemy[])concat(subset(enemies, 0, i), subset(enemies, i+1, enemies.length-i-1));
+      }
+  
+    }
+  
+    //hp
+    draw_hud();
+  
+  
+    //draw muffin
+    muffin_instance.update();
+
+}
+
+
+
+
+
+
+
 void draw_floor(int x, int y) {
   image(floor_tile, x, y, 64, 40);
 }
@@ -13,6 +66,19 @@ void draw_hero() {
   noTint();
   popMatrix();
 }
+void draw_hero_2() {
+  pushMatrix();
+  translate(x_pos_2, y_pos_2);
+  scale(hero_dir_2, 1);
+  if (invis_counter_2 > 1) {
+    tint(100, 100, 100);
+  }    
+  image(current_hero_2, hero_width_offset_2, hero_height_offset_2, hero_width_2 , hero_height_2 );
+  noTint();
+  popMatrix();
+}
+
+
 
 void draw_rope(int x, int y, boolean end) {
   if(end == true){
