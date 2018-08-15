@@ -8,7 +8,7 @@ void start_(){
 
 
   //opsætter arrays
-  Bane_nr = str(round(random(1, max_baner)));
+  Bane_nr = str(round(random(2, max_baner)));
   
   Array_loading();
   
