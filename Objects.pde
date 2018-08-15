@@ -80,7 +80,19 @@ class muffin {
   void update() {
     if (Player_1.x_pos < xpos+40 && Player_1.x_pos > xpos-40 && Player_1.y_pos < ypos+30 && Player_1.y_pos > ypos-30) {
       taken = true;
+
+      //Tjavs 1
       Player_1.new_Hero();
+      //Tjavs 2
+
+      current_bullet_speed = int(random(5,15));
+      current_bullet = "hej";
+      muffin_instance = new muffin(int(random(100,800)),500); 
+      enemies = (enemy[])append(enemies,new enemy("normal",4,100));
+
+      score++;
+      new_Hero();
+      //end
 
       
       int temp_y;
