@@ -10,12 +10,6 @@ void draw_game(){
       }
       bullets[i].update();
     }
-  
-  
-    draw_hero();
-    if(players == 2){
-      draw_hero_2();
-    }
     
   
     // draw map
@@ -55,29 +49,6 @@ void draw_floor(int x, int y) {
   image(floor_tile, x, y, 64, 40);
 }
 
-void draw_hero() {
-  pushMatrix();
-  translate(x_pos, y_pos);
-  scale(hero_dir, 1);
-  if (invis_counter > 1) {
-    tint(100, 100, 100);
-  }    
-  image(current_hero, hero_width_offset, hero_height_offset, hero_width , hero_height );
-  noTint();
-  popMatrix();
-}
-void draw_hero_2() {
-  pushMatrix();
-  translate(x_pos_2, y_pos_2);
-  scale(hero_dir_2, 1);
-  if (invis_counter_2 > 1) {
-    tint(100, 100, 100);
-  }    
-  image(current_hero_2, hero_width_offset_2, hero_height_offset_2, hero_width_2 , hero_height_2 );
-  noTint();
-  popMatrix();
-}
-
 
 
 void draw_rope(int x, int y, boolean end) {
@@ -100,13 +71,13 @@ void draw_background() {
 
 
 void draw_liv() {
-  for (int i=0; i < hero_liv; i++) {
+  for (int i=0; i < Player_1.hero_liv; i++) {
     fill(255, 0, 0);
     image(HP_img, 20+i*40, 20);
     //ellipse(20+i*40,20,20,20);
   }
   if(players == 2){
-    for (int i=0; i < hero_liv_2; i++) {
+    for (int i=0; i < Player_2.hero_liv; i++) {
       fill(255, 0, 0);
       image(HP_img, 1200-i*40, 20);
       //ellipse(20+i*40,20,20,20);
@@ -118,7 +89,7 @@ void draw_score() {
   pushMatrix();
   fill(0, 0, 0);
   textSize(25); 
-  text(str(score), 150, 40); 
+  text(str(Player_1.score), 150, 40); 
   popMatrix();
   
   if(players == 2){
@@ -126,7 +97,7 @@ void draw_score() {
   fill(0, 0, 0);
   textSize(25); 
   textAlign(RIGHT, RIGHT);
-  text(str(score_2), 1100, 40); 
+  text(str(Player_2.score), 1100, 40); 
   popMatrix();
   }
 }

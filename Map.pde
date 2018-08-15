@@ -20,8 +20,8 @@ void Bane_Creater(String file_name) {
         map_objekter = (map_objekt[])append(map_objekter, new map_objekt(64*q, 64*(i-4), true, "floor"));
         ropes = (rope[])append(ropes, new rope(64*q+26, 64*(i-4),true));
       } else if (Bane_file[i].charAt(q) == 'p') {
-        x_pos = q*64;
-        y_pos = (i-4)*64;
+        Player_1.x_pos = q*64;
+        Player_1.y_pos = (i-4)*64;
       }else if(Bane_file[i].charAt(q) == 's') {
         enemy_spawn_points = (int[][])append(enemy_spawn_points, new int[64*q]);
         enemy_spawn_points[enemy_spawn_points.length-1] = (int[])append(enemy_spawn_points[enemy_spawn_points.length-1], 64*(i-4));
