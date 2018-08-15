@@ -9,7 +9,8 @@ void load_billeder() {
 
   //loader billeder
   s = loadShape("soldier.svg");
-  background_img =  loadImage("/Baner/Bane_1/Background.png");
+  background_img =  loadImage("/Baner/Bane_"+ Bane_nr +"/Background.png");
+  background_img.resize(width, height);
   floor_tile = loadImage("/Baner/Bane_1/floor.png");
   HP_img = loadImage("/spr/HP.png");
   rope_spr = loadImage("/Baner/Bane_1/rope.png");
