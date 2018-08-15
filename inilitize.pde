@@ -1,5 +1,5 @@
 void start_(){
-  keys=new boolean[4];
+  keys=new boolean[8];
   keys[0]=false;
   keys[1]=false;
   keys[2]=false;
