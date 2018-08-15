@@ -105,14 +105,30 @@ void draw_liv() {
     image(HP_img, 20+i*40, 20);
     //ellipse(20+i*40,20,20,20);
   }
+  if(players == 2){
+    for (int i=0; i < hero_liv_2; i++) {
+      fill(255, 0, 0);
+      image(HP_img, 1200-i*40, 20);
+      //ellipse(20+i*40,20,20,20);
+    }
+  }
 }
 
 void draw_score() {
   pushMatrix();
   fill(0, 0, 0);
   textSize(25); 
-  text(str(score), 150, 42); 
+  text(str(score), 150, 40); 
   popMatrix();
+  
+  if(players == 2){
+  pushMatrix();
+  fill(0, 0, 0);
+  textSize(25); 
+  textAlign(RIGHT, RIGHT);
+  text(str(score_2), 1100, 40); 
+  popMatrix();
+  }
 }
 
 

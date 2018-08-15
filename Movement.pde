@@ -80,12 +80,11 @@ void keyPressed() {
     }
   }
   if (key=='e') {
-    bullets = (bullet[])append(bullets, new bullet(x_pos+hero_dir*(-80), y_pos, str(hero_index), current_bullet_speed));
+    bullets = (bullet[])append(bullets, new bullet(x_pos+hero_dir*(-80), y_pos, str(hero_index), current_bullet_speed,hero_dir, current_bullet_skade)); //<>//
   }
     if (key=='-') {
-    if (jumping_2 == false &&  gravity_able_2 == true) {
-      jumping_2 = true;
-    }
+      bullets = (bullet[])append(bullets, new bullet(x_pos_2+hero_dir_2*(-80), y_pos_2, str(hero_index_2), current_bullet_speed_2, hero_dir_2, current_bullet_skade_2));
+
   }  
   if (key==CODED){
     if(keyCode == LEFT)
@@ -97,7 +96,9 @@ void keyPressed() {
     if(keyCode == RIGHT)
       keys[7]=true;
     if(keyCode == SHIFT){
-      bullets = (bullet[])append(bullets, new bullet(x_pos_2+hero_dir_2*(-80), y_pos_2, str(hero_index_2), current_bullet_speed_2));
+      if (jumping_2 == false &&  gravity_able_2 == true) {
+        jumping_2 = true;
+      } //<>//
     }
   }
 }

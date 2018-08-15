@@ -50,10 +50,24 @@ void draw() {
   
   
   ///// TODOD
-    if (hero_liv == 0) {
-      textSize(93); 
-      text("GAME OVER", 400, 400); 
-      noLoop();
+    if(players == 1){
+      if (hero_liv == 0) {
+        textSize(93); 
+        text("GAME OVER", 800, 400); 
+        noLoop();
+      }
+    }else if(players == 2){
+      if (hero_liv <= 0 && hero_liv_2 <= 0) {
+        textSize(93); 
+        text("GAME OVER", 800, 400); 
+        noLoop();
+      }else if (hero_liv < 0 && hero_liv_2 > 0){
+        hero_liv_2 += hero_liv;
+        hero_liv = 0;
+      }else if (hero_liv > 0 && hero_liv_2 < 0){
+        hero_liv += hero_liv_2;
+        hero_liv_2 = 0;
+      }
     }
   }
 }

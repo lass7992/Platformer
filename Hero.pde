@@ -17,10 +17,10 @@ void new_Hero(){
 }
 
 void new_Hero_2(){
-  hero_index = int(round(random(1,3)));
+  hero_index_2 = int(round(random(1,3)));
   
-  String [] Hero_file = loadStrings("/Hero/Hero" + str(hero_index)+"/Hero_data.txt");
-  current_hero_2 = loadImage("/Hero/Hero" + str(hero_index)+"/Hero_spr.png");
+  String [] Hero_file = loadStrings("/Hero/Hero" + str(hero_index_2)+"/Hero_data.txt");
+  current_hero_2 = loadImage("/Hero/Hero" + str(hero_index_2)+"/Hero_spr.png");
   hero_width_2 = int(Hero_file[0]);
   hero_height_2 = int(Hero_file[1]);
   hero_width_offset_2 = int(Hero_file[2]);
