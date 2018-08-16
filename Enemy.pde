@@ -39,7 +39,7 @@ class enemy {
       }
       ypos -= screen_y;
       if(angry == false){
-        speed = speed *2;
+        speed = speed*2;
         angry = true;
       }
       if (random(1) >= 0.5) {
@@ -49,7 +49,7 @@ class enemy {
       }
     }
 
-    if (collision_down(xpos, ypos-14, enemy_width) == true) {
+    if (collision_down(xpos, ypos, enemy_width) == true) {
       ypos += 8;
     } else {
       xpos += dir*speed;
@@ -74,6 +74,7 @@ class enemy {
       if(type == "normal"){
         image(enemy_img[round(billede_index/5)], -enemy_width/2, -enemy_height/2, enemy_width, enemy_height);
       }else{
+        println(enemy_height);
         image(super_enemy_img[round(billede_index/billede_index)-1], -enemy_width/2, -enemy_height/2, enemy_width, enemy_height);
       }
       noTint();

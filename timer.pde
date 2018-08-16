@@ -7,11 +7,11 @@ void Time_Controllers(){
   if(time > enemy_spawn_rate){
     
     time -= enemy_spawn_rate;
-    if(super_charge < 10){
+    if(super_charge < 1){
       enemies = (enemy[])append(enemies, new enemy("normal", 4, 100,normal_enemy_scale[0],normal_enemy_scale[1]));
     }else{
       super_charge -= 10;
-      enemies = (enemy[])append(enemies, new enemy("super", 6, 200,super_enemy_scale[0],super_enemy_scale[1]));
+      enemies = (enemy[])append(enemies, new enemy("super", 2, 500,super_enemy_scale[0],super_enemy_scale[1]));
     }
      
   }
